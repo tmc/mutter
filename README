@@ -1,0 +1,20 @@
+About:
+Test Notifier is a small python program that leverages inotify
+(python-pyinotify http://pyinotify.sourceforge.net/) and python-notify
+(libnotify) to provide popup notifications based on the output of a command that
+is invoked when a matching file within an observed directory tree changes.
+
+Dependencies:
+python-pyinotify
+python-notify
+notification-daemon
+mpg123 (for mp3 playing, other players usable)
+
+On a debian based distro these packages could be installed with:
+apt-get install python-pyinotify python-notify notification-daemon mpg123
+
+Author:
+Travis Cline (tclineks)
+
+License:
+The MIT License	http://www.opensource.org/licenses/mit-license.php
