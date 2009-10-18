@@ -1,20 +1,21 @@
-About:
-Test Notifier is a small python program that leverages inotify
-(python-pyinotify http://pyinotify.sourceforge.net/) and python-notify
-(libnotify) to provide popup notifications based on the output of a command that
-is invoked when a matching file within an observed directory tree changes.
+=====
+About
+=====
+Mutter is a small python program that runs a specified command when
+certain conditions are met. By default it will play sounds based on the return
+value of the provided command.
 
-Dependencies:
-python-pyinotify
-python-notify
-notification-daemon
-mpg123 (for mp3 playing, other players usable)
+I intend to make it easy to write custom notifiers and smart resonders.
+Think growl notifications or intelligently only running a subset of a test suite.
 
-On a debian based distro these packages could be installed with:
-apt-get install python-pyinotify python-notify notification-daemon mpg123
+An example invokation might be:
+`mutter -c nosetests`
+which would run nosetests whenever a file under the current path is changed,
+removed or added.
 
-Author:
-Travis Cline (tclineks)
+See `mutter --help` for more information.
 
-License:
-The MIT License	http://www.opensource.org/licenses/mit-license.php
+================
+Similar projects
+================
+Chris Heisel's pywatch is a similar project that was released before
