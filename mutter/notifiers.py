@@ -15,14 +15,14 @@ class SoundPlayer:
         }
 
         self.player = 'mpg123'
-        if platform.system == 'Darwin':
+        if platform.system() == 'Darwin':
             self.player = 'afplay'
 
     def play(self, name):
         if name not in self.sounds:
             print 'sound "%s" not found in mapping' % name
         sound_file = os.path.join(self.basedir, 'sounds', self.sounds[name])
-        subprocess.call([self.player, '-q', sound_file], stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+        subprocess.call([self.player, sound_file], stderr=subprocess.PIPE, stdout=subprocess.PIPE)
 
 class BaseNotifier(object):
     "Notifiers need only to implement notify"
@@ -40,5 +40,6 @@ class SoundNotifier(object):
         self.player = SoundPlayer()
 
     def notify(self, event):
+        print 'mutter: %s' % event
         if event in self.player.sounds:
             self.player.play(event)

@@ -22,7 +22,7 @@ See --help for usage.
 """
 
 __author__ = "Travis Cline (travis.cline@gmail.com)"
-__version__ = "0.0.1"
+__version__ = "0.0.2"
 
 import sys
 from optparse import OptionParser
@@ -63,6 +63,7 @@ class Mutter(object):
     def run(self):
         "main loop"
         self.notifier.notify('startup')
+        self.notifier.notify('watching')
         try:
             self.watcher.watch()
         except KeyboardInterrupt:
@@ -105,6 +106,11 @@ def main(argv):
     )
 
     (options, args) = parser.parse_args()
+
+    if not options.command:
+        print 'mutter: -c flag is required.'
+        print parser.format_help()
+        sys.exit(1)
 
     if len(options.directories) == 0:
         options.directories = ['.']
